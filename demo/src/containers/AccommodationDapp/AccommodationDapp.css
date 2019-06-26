@@ -1,0 +1,20 @@
+.AgencyLogo {
+    font-size: 45px !important;
+}
+
+.NavBarTypography {
+    flex-grow: 1;
+}
+
+.AgencyPageContent {
+    text-align: center;
+}
+
+.AgencyPageContainer {
+    background-color: #ffefe2;
+    min-height: calc(100vh - 69px);
+}
+
+.PageContainer {
+    margin: 20% 0;
+}

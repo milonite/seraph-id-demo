@@ -1,0 +1,10 @@
+.ActiveAgentContainer {
+    text-align: center;
+}
+
+.AgentChipContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-right: 10px;  
+}

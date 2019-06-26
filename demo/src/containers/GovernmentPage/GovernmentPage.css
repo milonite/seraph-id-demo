@@ -1,0 +1,73 @@
+
+
+.GovernmentLogo {
+    font-size: 45px !important; 
+}
+
+.GovPageContent {
+    text-align: center;
+}
+
+.GovPageContainer{
+    background-color: #edf2f9;
+    min-height: calc(100vh - 69px);
+}
+
+
+.GetCredentialsButton {
+    margin-top: 50px;
+}
+
+.NavBarTypography {
+    flex-grow: 1;
+}
+
+.CloseButton {
+    text-decoration: none;
+    color: white;
+}
+
+.InputField {
+    width: 400px;
+    margin-bottom: 15px !important;
+}
+
+.PageContainer {
+    margin: 20% 0;
+}
+
+.FormPageContainer {
+    margin-top: 10%;
+}
+
+.PassportFormTitle {
+    color: #2d4a89;
+    margin-bottom: 45px;
+}
+
+@media screen and (max-height: 900px) {
+    .FormPageContainer {
+        margin-top: 0;
+    }
+
+    .PassportFormTitle {
+        display: none;
+    }
+
+    .GetCredentialsButton {
+        margin-top: 25px;
+    }
+} 
+
+.GenderRadioButton {
+    text-align: left !important;
+    justify-content: left !important;
+    width: 400px;
+}
+
+.GenderRadioLabel {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 12pt;
+    margin-top: 25px;
+    margin-bottom: -5px; 
+}

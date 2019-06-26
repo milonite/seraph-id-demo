@@ -1,0 +1,42 @@
+
+.FlatCardContainer {
+    padding-bottom: 60px;
+}
+
+.FlatCardRowContainer {
+
+    display: flex;
+    justify-content: space-around;
+    padding: 0 15vw 45px 15vw;
+}
+
+.FlatPicture {
+    height: 180px;
+}
+
+.FlatCard {
+    width: 20vw;
+}
+
+.FlatDescription {
+    text-align: left;
+}
+
+.FlatCardContent {
+    padding: 20px !important; 
+    text-align: left;
+}
+
+.FlatCardTitle, .FlatCardActions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.FlatCardActions {
+    padding-right: 20px !important;
+    padding-bottom: 20px !important; 
+}
+
+.PriceSpec {
+    font-size: 10pt !important;
+}

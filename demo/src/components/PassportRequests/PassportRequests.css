@@ -1,0 +1,21 @@
+
+.PassportReqContainer {
+    padding-bottom: 80px;
+}
+
+.CredentialIssued {
+    color: green;
+}
+
+.ReqDenied {
+    color: red;
+}
+
+.RequestsPaper {
+    width: fit-content;
+    margin-top: 40px;
+}
+
+.ActionButtonLeft {
+    margin-right: 5px !important;
+}
