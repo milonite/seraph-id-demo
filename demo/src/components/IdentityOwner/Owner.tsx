@@ -35,6 +35,39 @@ export class Owner extends React.Component<Props, State> {
 
     renderJSONObject = (objString: string) => {
 
+        const jsonStart = "{";
+        const jsonEnd = "}"
+
+        const attributesStartIndex = objString.indexOf("attributes");
+        if (attributesStartIndex < 0) {
+            return <div> {jsonStart} {this.renderJSONLevel(objString)} {jsonEnd} </div>;
+        } else {
+            const fromAttrToEnd = objString.slice(attributesStartIndex + 12);
+            const closeAttrSectionIndex = fromAttrToEnd.indexOf('}');
+            const attributes = fromAttrToEnd.slice(0, closeAttrSectionIndex);
+            const others = fromAttrToEnd.slice(closeAttrSectionIndex + 1);
+
+            return (
+                <div>
+                    <p> {jsonStart} <br /> </p>
+                    <div className="JSONLevel">
+                        <p> "attributes": {jsonStart} <br />  </p>
+                        <div className="JSONLevel">
+                            {this.renderJSONLevel(attributes)}
+                        </div>
+                        <p> {jsonEnd}, <br /> </p>
+                        {this.renderJSONLevel(others)}
+                    </div>
+                    <p> {jsonEnd} <br /> </p>
+
+                </div>
+            );
+        }
+    }
+
+
+    renderJSONLevel = (objString: string) => {
+
         if (objString) {
             const l = objString.length;
             const step0 = objString.substring(1, l - 1);
@@ -45,21 +78,16 @@ export class Owner extends React.Component<Props, State> {
                 } else {
                     return <p key={index}> {field}, <br />  </p>
                 }
-
             });
-            const jsonStart = "{";
-            const jsonEnd = "}"
             return (
-                <div> {jsonStart} {res} {jsonEnd} </div>
+                <div> {res} </div>
             );
 
         } else {
             return (
                 <div> Not available </div>
             );
-
         }
-
     }
 
 
@@ -143,7 +171,7 @@ export class Owner extends React.Component<Props, State> {
                         <p> Waiting for the claim from the {Agents.government}. </p>
                         <Link to="/government" className="ButtonLink">
                             <Fab disabled variant="extended">
-                            {OWNER_GOV_BTN_LABEL}
+                                {OWNER_GOV_BTN_LABEL}
                             </Fab>
                         </Link>
                     </div>
@@ -379,7 +407,7 @@ export class Owner extends React.Component<Props, State> {
 
     openDialog = (type: string) => {
         if (type === 'DID') {
-            const ownerDID = '' + localStorage.getItem('ownerDID');
+            const ownerDID = '{' + localStorage.getItem('ownerDID') + '}';
             const title = `${Agents.owner}'s DID`;
             this.setState({ dialogTitle: title, dialogContent: ownerDID, dialogOpen: true });
         } else if (type === 'gov') {
