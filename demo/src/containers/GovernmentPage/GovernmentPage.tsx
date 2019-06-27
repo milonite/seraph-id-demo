@@ -25,7 +25,7 @@ interface Props {
 }
 interface State {
     secondName: { value: string, error: boolean, touched: boolean };
-    birthDate: { value: string, error: boolean, touched: boolean };
+    birthDate: { value: string, error: boolean, touched: boolean, helperText: string };
     citizenship: { value: string, error: boolean, touched: boolean };
     address: string;
     gender: string;
@@ -35,10 +35,10 @@ export class GovernmentPage extends React.Component<Props, State> {
 
     public state: State = {
         secondName: { value: '', error: false, touched: false },
-        birthDate: { value: '', error: false, touched: false },
+        birthDate: { value: '', error: false, touched: false, helperText: 'Format DD.MM.YYYY' },
         citizenship: { value: '', error: false, touched: false },
         address: '',
-        gender: 'female'
+        gender: 'male'
     };
 
     handleSecondNameChange = (event: any) => {
@@ -50,12 +50,24 @@ export class GovernmentPage extends React.Component<Props, State> {
 
     handleBirthDateChange = (event: any) => {
         const inputValue = event.target.value;
+        localStorage.setItem('birthDate', inputValue);
+
         const regex = /^([0-2][0-9]|(3)[0-1])(\.)(((0)[0-9])|((1)[0-2]))(\.)\d{4}$/;
         const match = inputValue.match(regex);
 
-        localStorage.setItem('birthDate', inputValue);
-        const error = !inputValue || inputValue === '' || !match;
-        const newBirthDate = { value: event.target.value, error: error, touched: true };
+        let helperText = "Format DD.MM.YYYY";
+        let isDateValid = true;
+        const currentYear = new Date().getFullYear();
+        if (match) {
+            const year = inputValue.slice(-4);
+            if (year < currentYear - 100 || year >= 2019) {
+                isDateValid = false;
+                helperText = "Date not valid";
+            }
+        }
+        const error = !inputValue || inputValue === '' || !match || !isDateValid;
+
+        const newBirthDate = { value: event.target.value, error: error, touched: true, helperText: helperText };
         this.setState({ birthDate: newBirthDate });
     }
 
@@ -121,7 +133,7 @@ export class GovernmentPage extends React.Component<Props, State> {
                                 label="Date of birth"
                                 value={this.state.birthDate.value}
                                 error={this.state.birthDate.error}
-                                helperText="Format DD.MM.YYYY"
+                                helperText={this.state.birthDate.helperText}
                                 onChange={(event) => this.handleBirthDateChange(event)}
                             />
                         </div>
