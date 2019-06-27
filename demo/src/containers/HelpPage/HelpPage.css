@@ -6,6 +6,7 @@
     color: white;
     text-align: center; 
     padding-top: 20px;
+    padding-bottom: 60px;
 }
 
 .DashboardLink {
@@ -26,9 +27,6 @@
         height: 150px;
     }
 
-    .HelpPageContainer {
-        padding-top: 20px;
-    }
 }
 
 .DemoTitle {

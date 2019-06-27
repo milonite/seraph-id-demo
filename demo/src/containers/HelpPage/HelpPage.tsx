@@ -46,10 +46,10 @@ function HelpPage({ help, afterReset }: Props) {
                     <img src={logo} alt="SeraphID logo" className="SeraphLogo" />
                     <h2> Self Sovereign Identity on  <img src={neoLogo} alt="NEO logo" className="NeoLogo" /> </h2>
 
-                    <Grid container spacing={24}>
+                    <Grid container spacing={0}>
 
-                        <Grid item xs={3}> </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={2} sm={3}> </Grid>
+                        <Grid item xs={8} sm={6}>
                             <h4>  Help {Agents.owner} to book an accommodation </h4>
                             <div className="HelpText">
                                 <p>
@@ -108,7 +108,7 @@ function HelpPage({ help, afterReset }: Props) {
 
 
                         </Grid>
-                        <Grid item xs={3}> </Grid>
+                        <Grid item xs={2} sm={3}> </Grid>
                     </Grid>
 
                     {help ? (
