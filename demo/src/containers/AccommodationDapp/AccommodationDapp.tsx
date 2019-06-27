@@ -174,21 +174,17 @@ export class AccommodationDapp extends React.Component<Props, State> {
         const flatAddress = localStorage.getItem('flatLocation');
         const flatId = localStorage.getItem('flatId');
 
-        /* const validFrom = new Date();
-        const validTo = new Date('2019-06-21'); */
+        const validFrom = new Date();
+        validFrom.setHours(0, 0, 0, 0);
+        const validTo = new Date();
+        validTo.setHours(23, 59, 59, 999);
 
         const claimID = uuid();
         const newClaim = agencyIssuer.createClaim(claimID, configs.ACCESS_KEY_SCHEMA_NAME,
             {
                 'flatId': flatId,
                 'address': flatAddress
-            }, ownerDID ? ownerDID : '');
-
-        /* const newClaim = agencyIssuer.createClaim(claimID, configs.ACCESS_KEY_SCHEMA_NAME,
-        {
-            'flatId': flatId,
-            'address': flatAddress
-        }, ownerDID ? ownerDID : '', validFrom, validTo); */
+            }, ownerDID ? ownerDID : '', validFrom, validTo);
 
 
         console.log('new created Claim', newClaim);

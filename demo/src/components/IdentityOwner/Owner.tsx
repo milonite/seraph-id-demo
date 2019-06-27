@@ -51,12 +51,12 @@ export class Owner extends React.Component<Props, State> {
             const jsonEnd = "}"
             return (
                 <div> {jsonStart} {res} {jsonEnd} </div>
-            );;
+            );
 
         } else {
             return (
                 <div> Not available </div>
-            );;
+            );
 
         }
 
