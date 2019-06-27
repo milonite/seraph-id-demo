@@ -11,8 +11,9 @@ import CodeIcon from '@material-ui/icons/Code';
 // Import from seraph-id-sdk 
 import { DIDNetwork } from '@sbc/seraph-id-sdk';
 
-const OWNER_GOV_BTN_LABEL = 'Apply for Passport'; // 'Get credentials from Government';
-const OWNER_AGENCY_BTN_LABEL = 'Book a flat'; // 'Get credentials from Accommodation dApp';
+const OWNER_GOV_BTN_LABEL = 'Apply for Passport';
+const OWNER_AGENCY_BTN_LABEL = 'Book a flat';
+const OWNER_DOOR_BTN_LABEL = 'Open the door';
 
 
 interface Props {
@@ -285,8 +286,8 @@ export class Owner extends React.Component<Props, State> {
                     <p> Use the access key provided from the Agency,
                         <br />  to open the door of the accommodation. </p>
                     <Fab disabled variant="extended">
-                        Open Door
-                        </Fab>
+                        {OWNER_DOOR_BTN_LABEL}
+                    </Fab>
                 </div>
             );
         } else {
@@ -298,8 +299,8 @@ export class Owner extends React.Component<Props, State> {
                             <p> Use the access key you just got from the {Agents.smartAgency},
                                 <br />  to open the door of the accommodation. </p>
                             <Fab onClick={() => this.openDoor(value)} variant="extended" color="primary">
-                                Open Door
-                             </Fab>
+                                {OWNER_DOOR_BTN_LABEL}
+                            </Fab>
                         </div>
                     );
                 } else {
@@ -310,7 +311,7 @@ export class Owner extends React.Component<Props, State> {
                             <Tooltip title={Agents.owner + " didn't book any flat yet"}>
                                 <div>
                                     <Fab disabled variant="extended">
-                                        Open Door
+                                        {OWNER_DOOR_BTN_LABEL}
                                     </Fab>
                                 </div>
                             </Tooltip>

@@ -192,11 +192,11 @@ export class GovernmentPage extends React.Component<Props, State> {
 
                     {this.getFormValidation() ? (
                         <div className="GetCredentialsButton">
-                            <Fab onClick={() => this.getCredentials(value)} variant="extended" color="secondary"> Get Credentials </Fab>
+                            <Fab onClick={() => this.getCredentials(value)} variant="extended" color="secondary"> Send Request </Fab>
                         </div>
                     ) : (
                             <div className="GetCredentialsButton">
-                                <Fab disabled variant="extended"> Get Credentials </Fab>
+                                <Fab disabled variant="extended"> Send Request </Fab>
                             </div>
 
                         )}

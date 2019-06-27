@@ -127,8 +127,8 @@ function FlatCard({ imageRef, city, price, rooms, meters, others, clicked }: Car
             </CardActionArea>
             <CardActions className="FlatCardActions">
                 <div></div>
-                <Fab size="small" variant="extended" style={style} onClick={clicked}>
-                    Book flat
+                <Fab size="medium" variant="extended" style={style} onClick={clicked}>
+                    Book
                 </Fab>
             </CardActions>
         </Card>

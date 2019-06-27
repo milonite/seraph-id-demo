@@ -102,7 +102,8 @@ export class SmartAgency extends React.Component<Props, State> {
                         </div>
 
                         <Dialog onClose={() => this.handleDialog(false)} open={this.state.smartContractDialogOpen} maxWidth="lg">
-                            <DialogTitle> Issuer Smart Contract Code</DialogTitle>
+                            <DialogTitle> Code of Issuer Smart Contract for {Agents.smartAgency} </DialogTitle>
+
                             <div>
                                 <DialogContent className="DialogContent DialogContentPadding">
 
