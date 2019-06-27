@@ -24,7 +24,6 @@ interface Props {
     ownerWallet: any;
 }
 interface State {
-    firstName: { value: string, error: boolean, touched: boolean };
     secondName: { value: string, error: boolean, touched: boolean };
     birthDate: { value: string, error: boolean, touched: boolean };
     citizenship: { value: string, error: boolean, touched: boolean };
@@ -35,20 +34,12 @@ interface State {
 export class GovernmentPage extends React.Component<Props, State> {
 
     public state: State = {
-        firstName: { value: Agents.owner, error: false, touched: false },
         secondName: { value: '', error: false, touched: false },
         birthDate: { value: '', error: false, touched: false },
         citizenship: { value: '', error: false, touched: false },
         address: '',
         gender: 'female'
     };
-
-    handleFirstNameChange = (event: any) => {
-        localStorage.setItem('firstName', event.target.value);
-        const error = !event.target.value || event.target.value === '';
-        const newFirstName = { value: event.target.value, error: error, touched: true };
-        this.setState({ firstName: newFirstName });
-    }
 
     handleSecondNameChange = (event: any) => {
         localStorage.setItem('secondName', event.target.value);
@@ -88,8 +79,7 @@ export class GovernmentPage extends React.Component<Props, State> {
 
     getFormValidation = () => {
         if (this.state.secondName.touched && this.state.birthDate.touched && this.state.citizenship.touched) {
-            return !(this.state.firstName.error || this.state.secondName.error ||
-                this.state.citizenship.error || this.state.birthDate.error);
+            return !(this.state.secondName.error || this.state.citizenship.error || this.state.birthDate.error);
         } else return false;
 
     }
@@ -103,12 +93,11 @@ export class GovernmentPage extends React.Component<Props, State> {
                         <div>
                             <TextField
                                 className="InputField"
+                                disabled
                                 required
                                 id="first-name"
                                 label="First Name"
-                                value={this.state.firstName.value}
-                                error={this.state.firstName.error}
-                                onChange={(event) => this.handleFirstNameChange(event)}
+                                value={Agents.owner}
                             />
                         </div>
 
@@ -233,7 +222,7 @@ export class GovernmentPage extends React.Component<Props, State> {
 
     renderContentForGovernment = (value: any) => {
 
-        const name = localStorage.getItem('firstName');
+        const name = Agents.owner;
         const surname = localStorage.getItem('secondName');
         const birthDate = localStorage.getItem('birthDate');
         const citizenship = localStorage.getItem('citizenship');
