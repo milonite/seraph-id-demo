@@ -85,9 +85,9 @@ export class SmartAgency extends React.Component<Props, State> {
                             {this.renderdemoAgencyContent(value)}
                             {value.actions.demoOwnerDID === 'success' ? (
                                 <Link to="/accommodationAdmin" className="ButtonLink">
-                                    <Fab variant="extended" color="primary"> Go To Accommodation DApp </Fab>
+                                    <Fab variant="extended" color="primary"> Go To Accommodation dApp </Fab>
                                 </Link>
-                            ) : (<Fab disabled variant="extended"> Go To Accommodation DApp </Fab>)
+                            ) : (<Fab disabled variant="extended"> Go To Accommodation dApp </Fab>)
                             }
 
                             {value.showHelp ? (

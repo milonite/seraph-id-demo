@@ -55,12 +55,12 @@ function HelpPage({ help, afterReset }: Props) {
                                 <p>
 
                                     <em className="AccentKeyWord"> {Agents.owner} </em> is looking for an accommodation.
-                                    He has discovered a new smart shared <em className="AccentKeyWord"> accommodation DApp </em>
-                                    built on top of the NEO blockchain. To make the reservation, the DApp requires {Agents.owner} to identify himself as an individual.
+                                    He has discovered a new smart shared <em className="AccentKeyWord"> accommodation dApp </em>
+                                    built on top of the NEO blockchain. To make the reservation, the dApp requires {Agents.owner} to identify himself as an individual.
 
                                     Fortunately for {Agents.owner}, his <em className="AccentKeyWord"> {Agents.government} </em> has recently decided to implement a digital version of the national ID with the help of the NEO blockchain. {Agents.owner} needs to apply for a digital ID  by presenting his physical ID to a local authority.
-                                    At the moment of booking, {Agents.owner} can identify himself to the DApp with his digital Passport.
-                                    Once the identity is verified, the DApp issues an access key credential to {Agents.owner}. Among the other things, the access key contains a
+                                    At the moment of booking, {Agents.owner} can identify himself to the dApp with his digital Passport.
+                                    Once the identity is verified, the dApp issues an access key credential to {Agents.owner}. Among the other things, the access key contains a
                                     code that gives access to an automatic door to enter the accommodation.
 
                                     When {Agents.owner} arrives at his accommodation, he displays the booking confirmation to
@@ -78,8 +78,8 @@ function HelpPage({ help, afterReset }: Props) {
                                             <AccountCircleIcon className="DemoInstructionsIcons" />
                                         </ListItemIcon>
                                         <p>
-                                            In the main screen you'll find four <strong className="AccentKeyWord">  cards </strong>, one for each agent. When you interact with {Agents.owner}'s card, you'll act in behalf of him.
-                                               So for the other three agents.
+                                            On the main screen you will find four <strong className="AccentKeyWord"> cards </strong>, one for each agent. When you interact with {Agents.owner}'s card, you'll act in behalf of him.
+                                            So for the other three agents.
                                          </p>
 
                                     </ListItem>
@@ -90,7 +90,7 @@ function HelpPage({ help, afterReset }: Props) {
                                         </ListItemIcon>
                                         <p>
                                             At the bottom of the page, you'll always find a yellow box with a <strong className="AccentKeyWord">  hint </strong>, which suggests you the next move.
-                                         </p>
+                                        </p>
                                     </ListItem>
 
                                     <ListItem className="DemoInstructionItem">
@@ -98,9 +98,9 @@ function HelpPage({ help, afterReset }: Props) {
                                             <HelpIcon className="DemoInstructionsIcons" />
                                         </ListItemIcon>
                                         <p>
-                                            In every moment, you can come back to this screen through an <strong className="AccentKeyWord"> help </strong> button you'll find on the top-right corner of each page.
-                                            Something went wrong? You can also reset everything and restart from scratch.
-                                         </p>
+                                            At any time, you can come back to this screen by clicking a <strong className="AccentKeyWord"> help </strong> button in the top-right corner of every page.
+                                            You can also reset the whole demo and restart from scratch if anything goes wrong.
+                                        </p>
                                     </ListItem>
                                 </List>
 

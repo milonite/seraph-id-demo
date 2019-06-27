@@ -11,6 +11,9 @@ import CodeIcon from '@material-ui/icons/Code';
 // Import from seraph-id-sdk 
 import { DIDNetwork } from '@sbc/seraph-id-sdk';
 
+const OWNER_GOV_BTN_LABEL = 'Apply for Passport'; // 'Get credentials from Government';
+const OWNER_AGENCY_BTN_LABEL = 'Book a flat'; // 'Get credentials from Accommodation dApp';
+
 
 interface Props {
     ownerWallet: any
@@ -118,8 +121,8 @@ export class Owner extends React.Component<Props, State> {
                 <div>
                     <p> Ask the {Agents.government} to issue a digital Passport. </p>
                     <Fab disabled variant="extended" >
-                        Get credentials from Government
-                        </Fab>
+                        {OWNER_GOV_BTN_LABEL}
+                    </Fab>
                 </div>
             );
         } else {
@@ -129,7 +132,7 @@ export class Owner extends React.Component<Props, State> {
                         <p> Ask the {Agents.government} to issue a digital Passport. </p>
                         <Link to="/government" className="ButtonLink">
                             <Fab variant="extended" color="primary">
-                                Get credentials from Government
+                                {OWNER_GOV_BTN_LABEL}
                             </Fab>
                         </Link>
                     </div>
@@ -140,8 +143,8 @@ export class Owner extends React.Component<Props, State> {
                         <p> Waiting for the claim from the {Agents.government}. </p>
                         <Link to="/government" className="ButtonLink">
                             <Fab disabled variant="extended">
-                                Get credentials from Government
-                        </Fab>
+                            {OWNER_GOV_BTN_LABEL}
+                            </Fab>
                         </Link>
                     </div>
 
@@ -178,9 +181,9 @@ export class Owner extends React.Component<Props, State> {
         if (value.actions.demoOwnerDID !== 'success') {
             return (
                 <div>
-                    <p> Once you got the digital Passport from the Government, you can use the claim in the accomodation DApp to get another credential: the access key. </p>
+                    <p> Once you got the digital Passport from the Government, you can use the claim in the accomodation dApp to get another credential: the access key. </p>
                     <Fab disabled variant="extended">
-                        Get credentials from Accommodation DApp
+                        {OWNER_AGENCY_BTN_LABEL}
                     </Fab>
                 </div>
             );
@@ -189,10 +192,10 @@ export class Owner extends React.Component<Props, State> {
                 if (value.actions.demoOwnerCredFromGov === 'success') {
                     return (
                         <div>
-                            <p> Use the claim of digital Passport you just got and go to the accomodation DApp to get another credential: the access key. </p>
+                            <p> Use the claim of digital Passport you just got and go to the accomodation dApp to get another credential: the access key. </p>
                             <Link to="/accommodation" className="ButtonLink">
                                 <Fab variant="extended" color="primary">
-                                    Get credentials from Accommodation DApp
+                                    {OWNER_AGENCY_BTN_LABEL}
                                 </Fab>
                             </Link>
                         </div>
@@ -200,11 +203,11 @@ export class Owner extends React.Component<Props, State> {
                 } else {
                     return (
                         <div>
-                            <p> Once you got the digital Passport from the Government, you can use the claim in the accomodation DApp to get another credential: the access key. </p>
+                            <p> Once you got the digital Passport from the Government, you can use the claim in the accomodation dApp to get another credential: the access key. </p>
                             <Link to="/accommodation" className="ButtonLink">
                                 <Fab variant="extended" color="primary">
-                                    Get credentials from Accommodation DApp
-                            </Fab>
+                                    {OWNER_AGENCY_BTN_LABEL}
+                                </Fab>
                             </Link>
                         </div>
                     );
@@ -216,7 +219,7 @@ export class Owner extends React.Component<Props, State> {
                         <p> Pending request to the {Agents.smartAgency}  </p>
                         <Link to="/accommodation" className="ButtonLink">
                             <Fab variant="extended" color="primary">
-                                Get credentials from Accommodation DApp
+                                {OWNER_AGENCY_BTN_LABEL}
                             </Fab>
                         </Link>
                     </div>

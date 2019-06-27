@@ -392,7 +392,7 @@ export class AccommodationDapp extends React.Component<Props, State> {
                                 <IconButton color="inherit" aria-label="Menu">
                                     <HomeIcon className="AgencyLogo" />
                                 </IconButton>
-                                <Typography variant="h6" color="inherit" className="NavBarTypography"> Smart Agency DApp </Typography>
+                                <Typography variant="h6" color="inherit" className="NavBarTypography"> Smart Agency dApp </Typography>
 
                                 <Tooltip title="Help">
                                     <Link to="/help" className="HelpButton">
