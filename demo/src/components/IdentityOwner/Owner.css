@@ -17,7 +17,7 @@
     padding: 30px 20px !important;
 }
 
-@media screen and (max-height: 890px) {
+@media screen and (max-height: 950px) {
 
     .OwnerGridItem {
         padding-top: 5px !important;

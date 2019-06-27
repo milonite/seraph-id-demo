@@ -441,7 +441,7 @@ export class Owner extends React.Component<Props, State> {
                                 <Grid
                                     container
                                     alignItems="center"
-                                    spacing={24}
+                                    spacing={0}
                                     direction="column"
                                     justify="space-between"
                                     className="OwnerGridContainer"
