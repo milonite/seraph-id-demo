@@ -14,7 +14,11 @@ function NavBar() {
         <div className="NavBarRoot">
             <AppBar position="static" className="NavBarMain">
                 <Toolbar>
-                    <img src={logoHorizontal} alt="SeraphID logo" className="navLogo" />
+                    <Tooltip title="Go to Seraph ID landing page">
+                        <a href="https://www.seraphid.io/">
+                            <img src={logoHorizontal} alt="SeraphID logo" className="navLogo" />
+                        </a>
+                    </Tooltip>
                     <Typography className="NavBarTypography"> </Typography>
                     <Tooltip title="Help">
                         <Link to="/help" className="HelpButton">

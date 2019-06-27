@@ -43,7 +43,11 @@ function HelpPage({ help, afterReset }: Props) {
             {(value: any) => (
 
                 <div className="HelpPageContainer">
-                    <img src={logo} alt="SeraphID logo" className="SeraphLogo" />
+                    <Tooltip title="Go to Seraph ID landing page" placement="top">
+                        <a href="https://www.seraphid.io/">
+                            <img src={logo} alt="SeraphID logo" className="SeraphLogo" />
+                        </a>
+                    </Tooltip>
                     <h2> Self Sovereign Identity on  <img src={neoLogo} alt="NEO logo" className="NeoLogo" /> </h2>
 
                     <Grid container spacing={0}>
