@@ -54,7 +54,7 @@ export class AccommodationDapp extends React.Component<Props, State> {
         console.log('passport Claim to Verify: ', value.passportClaim);
 
         if (passportClaim) {
-            agencyVerifier.validateClaim(passportClaim, (passportClaim) => { return true; }).then(
+            agencyVerifier.validateClaim(passportClaim, (passportClaim) => this.passportValidationFunc(passportClaim)).then(
                 (res: any) => {
                     console.log('validateClaim RES: ', res);
                     if (res) {
@@ -78,6 +78,19 @@ export class AccommodationDapp extends React.Component<Props, State> {
             this.handleVerifyingFailure(value);
         }
 
+    }
+
+    passportValidationFunc = (passportClaim: any) => {
+        let validated = false;
+        const birthDate = passportClaim.attributes.birthDate;
+        if (birthDate) {
+            const birthYear = birthDate.slice(-4);
+            const currentYear = new Date().getFullYear();
+            if (currentYear - birthYear > 17) {
+                validated = true;
+            }
+        }
+        return validated;
     }
 
     handleVerifyingFailure = (value: any) => {
