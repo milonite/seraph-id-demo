@@ -27,11 +27,21 @@ body {
     text-align: center;
 }
 
-@media screen and (max-height: 850px) {
+.AgentCardHeader {
+    background-color: rgb(210,210,210); 
+    padding: 0 16px !important;
+    border-radius: 10px 10px 0px 0px;
+}
+
+@media screen and (max-height: 1000px) {
 
     .AgentContainer {
         padding-top: 0 !important;
         padding-bottom: 0 !important;
+    }
+
+    .AgentCardHeader {
+        height: 65px;
     }
 }
 
@@ -55,12 +65,6 @@ body {
     margin: 20px;
     background-color: rgba(255, 255, 255, 0.9) !important;
     border-radius: 10px !important;
-}
-
-.AgentCardHeader {
-    background-color: rgb(210,210,210); 
-    padding: 0 16px !important;
-    border-radius: 10px 10px 0px 0px;
 }
 
 .AgentCardTitle {
