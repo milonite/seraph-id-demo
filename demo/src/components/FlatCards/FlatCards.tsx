@@ -2,6 +2,8 @@ import * as React from 'react';
 import './FlatCards.css';
 import { theme } from '../../containers/App';
 import { Typography, Fab, Card, CardActionArea, CardMedia, CardContent, CardActions } from '@material-ui/core';
+import MediaQuery from 'react-responsive';
+
 
 interface FlatCard {
     id: number;
@@ -31,47 +33,87 @@ function FlatCards({ flatBooked }: Props) {
         { id: 6, pictureRef: 'flat_6', city: 'Madrid', price: '210', rooms: 2, meters: 80, others: 'Pool' },
     ];
 
+    const renderFlatsInRow = (flats: FlatCard[]) => {
+        return flats.map(
+            flat => {
+                return (
+                    <FlatCard
+                        key={flat.id}
+                        imageRef={flat.pictureRef}
+                        city={flat.city}
+                        price={flat.price}
+                        rooms={flat.rooms}
+                        meters={flat.meters}
+                        others={flat.others}
+                        clicked={() => flatBooked(flat.id, flat.city, flat.price)}
+                    />
+                );
+            }
+        );
+    }
+
     return (
         <div className="FlatCardContainer">
-            <div className="FlatCardRowContainer">
 
-                {topFlats.map(
-                    flat => {
-                        return (
-                            <FlatCard
-                                key={flat.id}
-                                imageRef={flat.pictureRef}
-                                city={flat.city}
-                                price={flat.price}
-                                rooms={flat.rooms}
-                                meters={flat.meters}
-                                others={flat.others}
-                                clicked={() => flatBooked(flat.id, flat.city, flat.price)}
-                            />
-                        );
-                    }
-                )}
+            <div>
+                <MediaQuery query="(min-device-width: 1224px)">
+                    {/* desktop or laptop */}
+                    <div className="FlatCardRowContainer">
+                        {renderFlatsInRow(topFlats)}
+                    </div>
+
+                    <div className="FlatCardRowContainer">
+                        {renderFlatsInRow(bottomFlats)}
+                    </div>
+                </MediaQuery>
+
+                <MediaQuery query="(max-device-width: 1224px)">
+                    {/* tablet */}
+                    <MediaQuery query="(min-width: 750px)">
+
+                        <div className="FlatCardRowContainer">
+                            {renderFlatsInRow(topFlats.slice(0, 2))}
+                        </div>
+
+                        <div className="FlatCardRowContainer">
+                            {renderFlatsInRow([topFlats[2], bottomFlats[0]])}
+                        </div>
+
+                        <div className="FlatCardRowContainer">
+                            {renderFlatsInRow(bottomFlats.slice(1, 3))}
+                        </div>
+
+                    </MediaQuery>
+
+                    {/* mobile */}
+                    <MediaQuery query="(max-width: 750px)">
+
+                        <div className="FlatCardRowContainer">
+                            {renderFlatsInRow([topFlats[0]])}
+                        </div>
+
+                        <div className="FlatCardRowContainer">
+                            {renderFlatsInRow([topFlats[1]])}
+                        </div>
+
+
+                        <div className="FlatCardRowContainer">
+                            {renderFlatsInRow([topFlats[2]])}
+                        </div>
+
+                        <div className="FlatCardRowContainer">
+                            {renderFlatsInRow([bottomFlats[0]])}
+                        </div>
+
+                    </MediaQuery>
+
+
+                </MediaQuery>
+
             </div>
 
-            <div className="FlatCardRowContainer">
-                {bottomFlats.map(
-                    flat => {
-                        return (
-                            <FlatCard
-                                key={flat.id}
-                                imageRef={flat.pictureRef}
-                                city={flat.city}
-                                price={flat.price}
-                                rooms={flat.rooms}
-                                meters={flat.meters}
-                                others={flat.others}
-                                clicked={() => flatBooked(flat.id, flat.city, flat.price)}
-                            />
-                        );
-                    }
-                )}
 
-            </div>
+
         </div>
 
     );

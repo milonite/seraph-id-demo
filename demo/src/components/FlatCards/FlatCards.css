@@ -4,10 +4,9 @@
 }
 
 .FlatCardRowContainer {
-
     display: flex;
     justify-content: space-around;
-    padding: 0 15vw 45px 15vw;
+    padding: 0 10vw 45px 10vw;
 }
 
 .FlatPicture {
@@ -15,7 +14,8 @@
 }
 
 .FlatCard {
-    width: 20vw;
+    width: 320px;
+    margin: 0 15px;
 }
 
 .FlatDescription {
