@@ -101,7 +101,7 @@ export class GovernmentPage extends React.Component<Props, State> {
             return (
                 <div className="FormPageContainer">
                     <h1 className="PassportFormTitle"> Passport Request </h1>
-                    <form noValidate autoComplete="off">
+                    <form noValidate autoComplete="off" className="FormContainer">
                         <div>
                             <TextField
                                 className="InputField"

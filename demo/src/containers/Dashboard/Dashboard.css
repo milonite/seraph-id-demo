@@ -55,8 +55,18 @@ body {
         height: fit-content;
     }
 
+    .LandlordSection {
+        margin-bottom: 90px !important;
+    }
+
     .AgentContainer {
         padding: 20px 10px !important;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .LandlordSection {
+        margin-bottom: 140px !important;
     }
 }
 

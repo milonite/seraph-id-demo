@@ -41,7 +41,7 @@ export class Dashboard extends React.Component<Props, State> {
               <SmartAgency />
             </Paper>
 
-            <Paper className="SecondaryAgentPaper">
+            <Paper className="SecondaryAgentPaper LandlordSection">
               <LandLord />
             </Paper>
 
