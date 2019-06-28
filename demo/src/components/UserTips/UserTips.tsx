@@ -28,31 +28,21 @@ export class UserTips extends React.Component<Props, State> {
         return (
             <ApplicationContext.Consumer>
                 {(value: any) => (
-                    <div>
-                        <Snackbar
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'center',
-                            }}
-                            open={this.state.open}
-                            message={
-                                <span> 
-                                    <InfoIcon className="TipInfoIcon"/>
-                                    {value.tip}
-                                </span>
-                            }
-                            action={[
-                                <IconButton
-                                    key="close"
-                                    aria-label="Close"
-                                    color="inherit"
-                                    onClick={this.handleClose}
-                                >
-                                    <CloseIcon />
-                                </IconButton>,
-                            ]}
-                        />
-                    </div>
+                    <Snackbar
+                        onClick={this.handleClose}
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'center',
+                        }}
+                        open={this.state.open}
+                        message={
+                            <span
+                                className="UserTipContent">
+                                <InfoIcon className="TipInfoIcon" />
+                                {value.tip}
+                            </span>
+                        }
+                    />
                 )}
             </ApplicationContext.Consumer>
         );

@@ -3,3 +3,9 @@
     margin-bottom: -9px !important;
     margin-right: 10px;
 }
+
+@media screen and (max-width: 414px) {
+    .UserTipContent {
+        font-size: 11pt !important;
+    }
+}
