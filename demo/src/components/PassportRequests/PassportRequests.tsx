@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './PassportRequests.css';
 import { Paper, Table, TableHead, TableRow, TableBody, TableCell, Fab, Grid } from '@material-ui/core';
+import MediaQuery from 'react-responsive';
 
 
 interface Props {
@@ -90,41 +91,98 @@ function PassportRequests({ activeRequest, issued, denied }: Props) {
 
                 <Grid item>
                     <Paper className="RequestsPaper">
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell> First Name </TableCell>
-                                    <TableCell> Second Name</TableCell>
-                                    <TableCell> Gender </TableCell>
-                                    <TableCell align="right"> Birth Date</TableCell>
-                                    <TableCell align="right"> City </TableCell>
-                                    <TableCell align="right"> Passport ID</TableCell>
-                                    <TableCell align="center"> Actions</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {requests.map(req => (
-                                    <TableRow key={req.firstName + req.secondName}>
-                                        <TableCell component="th" scope="row">
-                                            {req.firstName}
-                                        </TableCell>
-                                        <TableCell>{req.secondName}</TableCell>
-                                        <TableCell>{req.gender === 'female' ? 'F' : 'M'}</TableCell>
-                                        <TableCell align="right">{req.birthDate}</TableCell>
-                                        <TableCell align="right">{req.address}</TableCell>
-                                        <TableCell align="right">{req.passportId}</TableCell>
-                                        {actions(req)}
+
+                        <MediaQuery query="(min-device-width: 1224px)">
+                            {/* desktop or laptop */}
+                            <Table>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell> First Name </TableCell>
+                                        <TableCell> Second Name</TableCell>
+                                        <TableCell> Gender </TableCell>
+                                        <TableCell align="right"> Birth Date</TableCell>
+                                        <TableCell align="right"> City </TableCell>
+                                        <TableCell align="right"> Passport ID</TableCell>
+                                        <TableCell align="center"> Actions</TableCell>
                                     </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
+                                </TableHead>
+                                <TableBody>
+                                    {requests.map(req => (
+                                        <TableRow key={req.firstName + req.secondName}>
+                                            <TableCell component="th" scope="row">
+                                                {req.firstName}
+                                            </TableCell>
+                                            <TableCell>{req.secondName}</TableCell>
+                                            <TableCell>{req.gender === 'female' ? 'F' : 'M'}</TableCell>
+                                            <TableCell align="right">{req.birthDate}</TableCell>
+                                            <TableCell align="right">{req.address}</TableCell>
+                                            <TableCell align="right">{req.passportId}</TableCell>
+                                            {actions(req)}
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </MediaQuery>
+
+
+                        <MediaQuery query="(max-device-width: 1224px)">
+                            {/* tablet */}
+                            <MediaQuery query="(min-width: 750px)">
+
+                                <Table>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell> First Name </TableCell>
+                                            <TableCell> Second Name</TableCell>
+                                            <TableCell align="right"> Passport ID</TableCell>
+                                            <TableCell align="center"> Actions</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {requests.map(req => (
+                                            <TableRow key={req.firstName + req.secondName}>
+                                                <TableCell component="th" scope="row">
+                                                    {req.firstName}
+                                                </TableCell>
+                                                <TableCell>{req.secondName}</TableCell>
+                                                <TableCell align="right">{req.passportId}</TableCell>
+                                                {actions(req)}
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+
+                            </MediaQuery>
+
+                            {/* mobile */}
+                            <MediaQuery query="(max-width: 750px)">
+                                
+                            <Table>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell> Name </TableCell>
+                                            <TableCell align="center"> Actions</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {requests.map(req => (
+                                            <TableRow key={req.firstName + req.secondName}>
+                                               <TableCell component="th" scope="row"> {req.firstName} {req.secondName} </TableCell>
+                                                {actions(req)}
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+
+                            </MediaQuery>
+                        </MediaQuery>
+
                     </Paper>
                 </Grid>
-
                 <Grid item> </Grid>
 
-            </Grid>
-        </div>
+            </Grid >
+        </div >
 
 
     );

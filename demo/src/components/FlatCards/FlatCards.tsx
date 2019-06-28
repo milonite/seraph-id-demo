@@ -55,64 +55,57 @@ function FlatCards({ flatBooked }: Props) {
     return (
         <div className="FlatCardContainer">
 
-            <div>
-                <MediaQuery query="(min-device-width: 1224px)">
-                    {/* desktop or laptop */}
+            <MediaQuery query="(min-device-width: 1224px)">
+                {/* desktop or laptop */}
+                <div className="FlatCardRowContainer">
+                    {renderFlatsInRow(topFlats)}
+                </div>
+
+                <div className="FlatCardRowContainer">
+                    {renderFlatsInRow(bottomFlats)}
+                </div>
+            </MediaQuery>
+
+            <MediaQuery query="(max-device-width: 1224px)">
+                {/* tablet */}
+                <MediaQuery query="(min-width: 750px)">
+
                     <div className="FlatCardRowContainer">
-                        {renderFlatsInRow(topFlats)}
+                        {renderFlatsInRow(topFlats.slice(0, 2))}
                     </div>
 
                     <div className="FlatCardRowContainer">
-                        {renderFlatsInRow(bottomFlats)}
+                        {renderFlatsInRow([topFlats[2], bottomFlats[0]])}
                     </div>
-                </MediaQuery>
 
-                <MediaQuery query="(max-device-width: 1224px)">
-                    {/* tablet */}
-                    <MediaQuery query="(min-width: 750px)">
-
-                        <div className="FlatCardRowContainer">
-                            {renderFlatsInRow(topFlats.slice(0, 2))}
-                        </div>
-
-                        <div className="FlatCardRowContainer">
-                            {renderFlatsInRow([topFlats[2], bottomFlats[0]])}
-                        </div>
-
-                        <div className="FlatCardRowContainer">
-                            {renderFlatsInRow(bottomFlats.slice(1, 3))}
-                        </div>
-
-                    </MediaQuery>
-
-                    {/* mobile */}
-                    <MediaQuery query="(max-width: 750px)">
-
-                        <div className="FlatCardRowContainer">
-                            {renderFlatsInRow([topFlats[0]])}
-                        </div>
-
-                        <div className="FlatCardRowContainer">
-                            {renderFlatsInRow([topFlats[1]])}
-                        </div>
-
-
-                        <div className="FlatCardRowContainer">
-                            {renderFlatsInRow([topFlats[2]])}
-                        </div>
-
-                        <div className="FlatCardRowContainer">
-                            {renderFlatsInRow([bottomFlats[0]])}
-                        </div>
-
-                    </MediaQuery>
-
+                    <div className="FlatCardRowContainer">
+                        {renderFlatsInRow(bottomFlats.slice(1, 3))}
+                    </div>
 
                 </MediaQuery>
 
-            </div>
+                {/* mobile */}
+                <MediaQuery query="(max-width: 750px)">
+
+                    <div className="FlatCardRowContainer">
+                        {renderFlatsInRow([topFlats[0]])}
+                    </div>
+
+                    <div className="FlatCardRowContainer">
+                        {renderFlatsInRow([topFlats[1]])}
+                    </div>
 
 
+                    <div className="FlatCardRowContainer">
+                        {renderFlatsInRow([topFlats[2]])}
+                    </div>
+
+                    <div className="FlatCardRowContainer">
+                        {renderFlatsInRow([bottomFlats[0]])}
+                    </div>
+
+                </MediaQuery>
+            </MediaQuery>
 
         </div>
 

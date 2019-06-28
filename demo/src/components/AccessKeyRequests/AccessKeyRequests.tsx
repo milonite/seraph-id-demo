@@ -3,6 +3,7 @@ import './AccessKeyRequests.css';
 import { Paper, Table, TableHead, TableRow, TableBody, TableCell, Fab, Grid } from '@material-ui/core';
 import { theme } from '../../containers/App';
 import moment from 'moment';
+import MediaQuery from 'react-responsive'
 
 interface Props {
     activeRequest?: AccessKeyReq;
@@ -59,7 +60,7 @@ function AccessKeyRequests({ activeRequest, verified, issued, denied }: Props) {
     }
 
     const getCheckOutDate = () => {
-        const days = getRandomInRange(0,15);
+        const days = getRandomInRange(0, 15);
         return moment().add(days, 'days').format("MMMM Do YYYY");
     }
 
@@ -89,17 +90,17 @@ function AccessKeyRequests({ activeRequest, verified, issued, denied }: Props) {
     const applicantPassportStatus = (req: AccessKeyReq) => {
         if (req.applicantPassportStatus === PassportStatus.toVerify) {
             return (
-                <TableCell align="center">
+                <TableCell padding="checkbox" align="center">
                     <Fab onClick={verified} variant="extended" style={style}> Verify Passport </Fab>
                 </TableCell>
             );
         } else if (req.applicantPassportStatus === PassportStatus.valid) {
             return (
-                <TableCell align="center"> <span className="CredentialIssued"> Valid </span> </TableCell>
+                <TableCell padding="checkbox" align="center"> <span className="CredentialIssued"> Valid </span> </TableCell>
             )
         } else {
             return (
-                <TableCell align="center"> <span className="ReqDenied"> Not valid </span> </TableCell>
+                <TableCell padding="checkbox" align="center"> <span className="ReqDenied"> Not valid </span> </TableCell>
             )
         }
     }
@@ -108,24 +109,24 @@ function AccessKeyRequests({ activeRequest, verified, issued, denied }: Props) {
 
         if (req.accessKeyStatus === AccessKeyStatus.waitingForPassport) {
             return (
-                <TableCell align="center">
+                <TableCell padding="checkbox" align="center">
                     -
                 </TableCell>
             );
         } else if (req.accessKeyStatus === AccessKeyStatus.pending) {
             return (
-                <TableCell align="center">
+                <TableCell padding="checkbox" align="center">
                     <Fab onClick={denied} variant="extended" style={style}> Deny </Fab>
-                    <Fab onClick={issued} variant="extended" style={style} className="RightButton">  Issue access Key </Fab>
+                    <Fab onClick={issued} variant="extended" style={style} className="RightButton"> Issue </Fab>
                 </TableCell>
             );
         } else if (req.accessKeyStatus === AccessKeyStatus.issued) {
             return (
-                <TableCell align="center"> <span className="CredentialIssued"> Issued </span> </TableCell>
+                <TableCell padding="checkbox" align="center"> <span className="CredentialIssued"> Issued </span> </TableCell>
             )
         } else {
             return (
-                <TableCell align="center"> <span className="ReqDenied"> Denied </span> </TableCell>
+                <TableCell padding="checkbox" align="center"> <span className="ReqDenied"> Denied </span> </TableCell>
             )
         }
     }
@@ -139,32 +140,98 @@ function AccessKeyRequests({ activeRequest, verified, issued, denied }: Props) {
 
                 <Grid item>
                     <Paper className="RequestsPaper">
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell> Flat location </TableCell>
-                                    <TableCell> Check in </TableCell>
-                                    <TableCell align="right"> Check Out </TableCell>
-                                    <TableCell align="right"> Price per night </TableCell>
-                                    <TableCell align="right"> Applicant Passport </TableCell>
-                                    <TableCell align="center"> Access Key </TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {requests.map(req => (
-                                    <TableRow key={req.id}>
-                                        <TableCell component="th" scope="row">
-                                            {req.city}
-                                        </TableCell>
-                                        <TableCell>{req.checkIn}</TableCell>
-                                        <TableCell align="right">{req.checkOut}</TableCell>
-                                        <TableCell align="right">{req.price} $ </TableCell>
-                                        {applicantPassportStatus(req)}
-                                        {accessKeyStatus(req)}
+
+
+                        <MediaQuery query="(min-device-width: 1224px)">
+                            {/* desktop or laptop */}
+
+                            <Table>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell> Flat location </TableCell>
+                                        <TableCell> Check in </TableCell>
+                                        <TableCell align="right"> Check Out </TableCell>
+                                        <TableCell align="right"> Price per night </TableCell>
+                                        <TableCell align="right"> Applicant Passport </TableCell>
+                                        <TableCell align="center"> Access Key </TableCell>
                                     </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
+                                </TableHead>
+                                <TableBody>
+                                    {requests.map(req => (
+                                        <TableRow key={req.id}>
+                                            <TableCell component="th" scope="row">
+                                                {req.city}
+                                            </TableCell>
+                                            <TableCell>{req.checkIn}</TableCell>
+                                            <TableCell align="right">{req.checkOut}</TableCell>
+                                            <TableCell align="right">{req.price} $ </TableCell>
+                                            {applicantPassportStatus(req)}
+                                            {accessKeyStatus(req)}
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+
+                        </MediaQuery>
+
+                        <MediaQuery query="(max-device-width: 1224px)">
+                            {/* tablet */}
+                            <MediaQuery query="(min-width: 750px)">
+
+                                <Table>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell> Flat location </TableCell>
+                                            <TableCell align="right"> Price per night </TableCell>
+                                            <TableCell align="right"> Applicant Passport </TableCell>
+                                            <TableCell padding="checkbox" align="center"> Access Key </TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {requests.map(req => (
+                                            <TableRow key={req.id}>
+                                                <TableCell component="th" scope="row">
+                                                    {req.city}
+                                                </TableCell>
+                                                <TableCell align="right">{req.price} $ </TableCell>
+                                                {applicantPassportStatus(req)}
+                                                {accessKeyStatus(req)}
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+
+                            </MediaQuery>
+
+                            {/* mobile */}
+                            <MediaQuery query="(max-width: 750px)">
+
+                                <Table>
+                                    <TableHead>
+                                        <TableRow>
+                                          
+                                            <TableCell padding="checkbox"> Flat location </TableCell>
+                                            <TableCell padding="checkbox" align="right"> Applicant Passport </TableCell>
+                                            <TableCell padding="checkbox" align="center"> Access Key </TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {requests.map(req => (
+                                            <TableRow key={req.id}>
+                                              
+                                                <TableCell padding="checkbox" component="th" scope="row">
+                                                    {req.city}
+                                                </TableCell>
+                                                {applicantPassportStatus(req)}
+                                                {accessKeyStatus(req)}
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+
+                            </MediaQuery>
+                        </MediaQuery>
+
                     </Paper>
                 </Grid>
 
