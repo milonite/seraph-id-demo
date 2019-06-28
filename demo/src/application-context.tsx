@@ -4,7 +4,7 @@ export const Agents = {
     owner: 'Oliver',
     government: 'Government',
     smartAgency: 'Agency',
-    landlord: 'Door lock',
+    landlord: 'Door Lock',
 }
 
 export const initialActions = {

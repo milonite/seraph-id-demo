@@ -323,7 +323,7 @@ export class Owner extends React.Component<Props, State> {
             else if (value.actions.demoOwnerOpenDoor === 'sharingCredentials') {
                 return (
                     <div>
-                        <p> Sharing access key with {Agents.landlord}. </p>
+                        <p> Sharing access key with the {Agents.landlord}. </p>
                         <CircularProgress />
                     </div>
                 );
@@ -375,7 +375,7 @@ export class Owner extends React.Component<Props, State> {
                     
                     console.log('access Key Claim from Owner Wallet', accessKeyClaim);
     
-                    value.nextTip(`Play as ${Agents.landlord} and verify the access key provided by ${Agents.owner}`);
+                    value.nextTip(`Let the ${Agents.landlord} verify the access key provided by ${Agents.owner}`);
                     value.changeAction('demoOwnerOpenDoor', 'waiting');
                     value.changeAction('demoLandlord', 'pendingRequest');
                     

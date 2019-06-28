@@ -71,8 +71,7 @@ function HelpPage({ help, afterReset }: Props) {
                                     code that gives access to an automatic door to enter the accommodation.
 
                                     When {Agents.owner} arrives at his accommodation, he displays the booking confirmation to
-
-                                    the <em className="AccentKeyWord"> {Agents.landlord}</em>, or to an automatic door with a IoT device capable to verify {Agents.owner}'s claim.
+                                    the <em className="AccentKeyWord"> {Agents.landlord}</em>, an automatic door with a IoT device capable to verify {Agents.owner}'s claim.
                                     Once the booking is verified, {Agents.owner} is finally able to enter the accommodation.
 
                                  </p>
