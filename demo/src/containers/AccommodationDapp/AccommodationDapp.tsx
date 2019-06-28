@@ -58,13 +58,14 @@ export class AccommodationDapp extends React.Component<Props, State> {
                 (res: any) => {
                     console.log('validateClaim RES: ', res);
                     if (res) {
-                        value.nextTip(`As ${Agents.smartAgency}, issue the Access Key of the booked accomodation to ${Agents.owner}`);
+                        setTimeout(() => {
+                            value.nextTip(`As ${Agents.smartAgency}, issue the Access Key of the booked accomodation to ${Agents.owner}`);
 
-                        value.changeAction('agencyPageAsOwner', 'waitingForAccessKey');
-                        value.changeAction('agencyPageAsAgency', 'digitalIdentityVerified');
-                        value.changeAction('demoOwnerCredFromAgency', 'waiting');
-                        value.changeAction('demoAgency', 'digitalIdentityVerified');
-
+                            value.changeAction('agencyPageAsOwner', 'waitingForAccessKey');
+                            value.changeAction('agencyPageAsAgency', 'digitalIdentityVerified');
+                            value.changeAction('demoOwnerCredFromAgency', 'waiting');
+                            value.changeAction('demoAgency', 'digitalIdentityVerified');
+                        }, 2000);
                     } else {
                         this.handleVerifyingFailure(value);
                     }
@@ -190,22 +191,25 @@ export class AccommodationDapp extends React.Component<Props, State> {
         console.log('new created Claim', newClaim);
         agencyIssuer.issueClaim(newClaim, configs.AGENCY_ISSUER_PRIVATE_KEY).then(
             res => {
-                console.log('issueClaimID RES', res.id);
+                setTimeout(() => {
+                    console.log('issueClaimID RES', res.id);
 
-                this.props.ownerWallet.addClaim(res);
+                    this.props.ownerWallet.addClaim(res);
 
-                const addedClaim = this.props.ownerWallet.getClaim(res.id);
-                console.log('claim Added to the Wallet: ', addedClaim);
+                    const addedClaim = this.props.ownerWallet.getClaim(res.id);
+                    console.log('claim Added to the Wallet: ', addedClaim);
 
-                localStorage.setItem('accessKeyClaimID', res.id);
-                localStorage.setItem('accessKeyClaim', JSON.stringify(res));
+                    localStorage.setItem('accessKeyClaimID', res.id);
+                    localStorage.setItem('accessKeyClaim', JSON.stringify(res));
 
-                value.nextTip(`Play as ${Agents.owner} and try to open the door with the access key you just got. `);
+                    value.nextTip(`Play as ${Agents.owner} and try to open the door with the access key you just got. `);
 
-                value.changeAction('agencyPageAsOwner', 'success');
-                value.changeAction('agencyPageAsAgency', 'credIssued');
-                value.changeAction('demoOwnerCredFromAgency', 'success');
-                value.changeAction('demoAgency', 'credIssued');
+                    value.changeAction('agencyPageAsOwner', 'success');
+                    value.changeAction('agencyPageAsAgency', 'credIssued');
+                    value.changeAction('demoOwnerCredFromAgency', 'success');
+                    value.changeAction('demoAgency', 'credIssued');
+
+                }, 2000);
             }
         ).catch(err => {
             console.error('issueClaim ERR', err);

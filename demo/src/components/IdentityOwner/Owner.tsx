@@ -371,13 +371,15 @@ export class Owner extends React.Component<Props, State> {
 
             if (accessKeyClaim) {
                 value.accessKeyClaim = accessKeyClaim;
-
-                console.log('access Key Claim from Owner Wallet', accessKeyClaim);
-
-                value.nextTip(`Play as ${Agents.landlord} and verify the access key provided by ${Agents.owner}`);
-
-                value.changeAction('demoOwnerOpenDoor', 'waiting');
-                value.changeAction('demoLandlord', 'pendingRequest');
+                setTimeout(() => {
+                    
+                    console.log('access Key Claim from Owner Wallet', accessKeyClaim);
+    
+                    value.nextTip(`Play as ${Agents.landlord} and verify the access key provided by ${Agents.owner}`);
+                    value.changeAction('demoOwnerOpenDoor', 'waiting');
+                    value.changeAction('demoLandlord', 'pendingRequest');
+                    
+                }, 2000);
 
             } else {
                 value.changeAction('demoOwnerOpenDoor', 'sharingCredentialsFailed');

@@ -53,7 +53,9 @@ function LandLord() {
             return (
                 <div>
                     <p> The access key is not verified. {Agents.owner} couldn't open the door of the accommodation. </p>
-                    <Fab disabled variant="extended"> Verify Access Key </Fab>
+                    <div>
+                        <Fab variant="extended" color="primary" onClick={() => verifyAccessKey(value)}> Try again </Fab>
+                    </div>
                 </div>
             );
         } else return null;
@@ -88,7 +90,7 @@ function LandLord() {
                 handleVerifyingFailure(value);
             });
         } else {
-            console.log('error getting passport claim');
+            console.log('error getting access key claim');
             handleVerifyingFailure(value);
         }
 

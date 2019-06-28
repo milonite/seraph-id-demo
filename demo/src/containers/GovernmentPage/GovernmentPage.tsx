@@ -356,25 +356,26 @@ export class GovernmentPage extends React.Component<Props, State> {
         console.log('new created Claim', newClaim);
         govIssuer.issueClaim(newClaim, configs.GOVERNMENT_ISSUER_PRIVATE_KEY).then(
             res => {
-                console.log('issueClaimID RES', res.id);
+                setTimeout(() => {
+                    console.log('issueClaimID RES', res.id);
 
-                this.props.ownerWallet.addClaim(res);
+                    this.props.ownerWallet.addClaim(res);
 
-                const addedClaim = this.props.ownerWallet.getClaim(res.id);
-                console.log('claim Added to the Wallet: ', addedClaim);
+                    const addedClaim = this.props.ownerWallet.getClaim(res.id);
+                    console.log('claim Added to the Wallet: ', addedClaim);
 
-                localStorage.setItem('passportClaimID', res.id);
-                localStorage.setItem('passportClaim', JSON.stringify(res));
+                    localStorage.setItem('passportClaimID', res.id);
+                    localStorage.setItem('passportClaim', JSON.stringify(res));
 
+                    value.changeAction('agencyPageAsOwner', 'toChooseAFlat');
+                    value.nextTip(`Play as ${Agents.owner} and choose an accommodation from the ${Agents.smartAgency} Web Page.`);
 
-                value.changeAction('agencyPageAsOwner', 'toChooseAFlat');
-                value.nextTip(`Play as ${Agents.owner} and choose an accommodation from the ${Agents.smartAgency} Web Page.`);
+                    value.changeAction('govPageAsOwner', 'success');
+                    value.changeAction('demoOwnerCredFromGov', 'success');
+                    value.changeAction('demoGov', 'credIssued');
+                    value.changeAction('govPageAsGov', 'credIssued');
 
-                value.changeAction('govPageAsOwner', 'success');
-                value.changeAction('demoOwnerCredFromGov', 'success');
-                value.changeAction('demoGov', 'credIssued');
-                value.changeAction('govPageAsGov', 'credIssued');
-
+                }, 2000);
             }
         ).catch(err => {
             console.error('issueClaim ERR', err);

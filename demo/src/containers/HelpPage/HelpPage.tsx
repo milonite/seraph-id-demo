@@ -33,6 +33,9 @@ function HelpPage({ help, afterReset }: Props) {
         value.changeAction('demoAgency', 'noRequests');
         value.changeAction('demoLandlord', 'noRequests');
 
+        value.passportClaim = null;
+        value.accessKeyClaim = null;
+
         value.resetContext(true);
 
     }
