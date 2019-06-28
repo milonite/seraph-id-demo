@@ -194,20 +194,27 @@ export class AccommodationDapp extends React.Component<Props, State> {
                 setTimeout(() => {
                     console.log('issueClaimID RES', res.id);
 
-                    this.props.ownerWallet.addClaim(res);
+                    try {
+                        this.props.ownerWallet.addClaim(res);
+                        const addedClaim = this.props.ownerWallet.getClaim(res.id);
+                        console.log('claim Added to the Wallet: ', addedClaim);
 
-                    const addedClaim = this.props.ownerWallet.getClaim(res.id);
-                    console.log('claim Added to the Wallet: ', addedClaim);
+                        localStorage.setItem('accessKeyClaimID', res.id);
+                        localStorage.setItem('accessKeyClaim', JSON.stringify(res));
 
-                    localStorage.setItem('accessKeyClaimID', res.id);
-                    localStorage.setItem('accessKeyClaim', JSON.stringify(res));
+                        value.nextTip(`Play as ${Agents.owner} and try to open the door with the access key you just got. `);
 
-                    value.nextTip(`Play as ${Agents.owner} and try to open the door with the access key you just got. `);
+                        value.changeAction('agencyPageAsOwner', 'success');
+                        value.changeAction('agencyPageAsAgency', 'credIssued');
+                        value.changeAction('demoOwnerCredFromAgency', 'success');
+                        value.changeAction('demoAgency', 'credIssued');
+                    }
+                    catch (err) {
+                        console.error('issueClaim ERR', err);
+                        this.doNotIssueAccesskey(value);
+                    }
 
-                    value.changeAction('agencyPageAsOwner', 'success');
-                    value.changeAction('agencyPageAsAgency', 'credIssued');
-                    value.changeAction('demoOwnerCredFromAgency', 'success');
-                    value.changeAction('demoAgency', 'credIssued');
+
 
                 }, 2000);
             }
