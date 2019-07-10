@@ -86,7 +86,7 @@ function PassportRequests({ activeRequest, issued, denied }: Props) {
         } else {
             return (
                 <TableCell align="center">
-                    <Tooltip title="Error: not able to connect to the Blockchain">
+                    <Tooltip title="Error: calling smart contract failed!">
                         <span className="ReqDenied"> Error </span>
                     </Tooltip>
                 </TableCell>

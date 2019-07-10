@@ -135,7 +135,7 @@ function AccessKeyRequests({ activeRequest, verified, issued, denied }: Props) {
         } else {
             return (
                 <TableCell padding="checkbox" align="center">
-                    <Tooltip title="Error: not able to connect to the Blockchain">
+                    <Tooltip title="Error: calling smart contract failed!">
                         <span className="ReqDenied"> Error </span>
                     </Tooltip>
                 </TableCell>
