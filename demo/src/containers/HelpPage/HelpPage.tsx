@@ -40,6 +40,7 @@ function HelpPage({ help, afterReset }: Props) {
         value.accessKeyClaim = null;
 
         value.resetContext(true);
+        localStorage.removeItem('gender');
 
     }
 

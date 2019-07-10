@@ -44,10 +44,6 @@ export class GovernmentPage extends React.Component<Props, State> {
         gender: 'male'
     };
 
-    componentDidMount() {
-        localStorage.removeItem('gender');
-    }
-
     handleSecondNameChange = (event: any) => {
         localStorage.setItem('secondName', event.target.value);
         const error = !event.target.value || event.target.value === '';
