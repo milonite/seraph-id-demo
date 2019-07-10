@@ -214,32 +214,37 @@ export class AccommodationDapp extends React.Component<Props, State> {
                     }
                     catch (err) {
                         console.error('issueClaim ERR', err);
-                        this.doNotIssueAccesskey(value);
+                        this.handleCredIssuingError(value);
                     }
-
-
 
                 }, 2000);
             }
         ).catch(err => {
             console.error('issueClaim ERR', err);
-            this.doNotIssueAccesskey(value);
+            this.handleCredIssuingError(value);
         });
     }
 
+    handleCredIssuingError = (value: any) => {
+        value.changeAction('agencyPageAsAgency', 'errorIssuingCred');
+        this.handleFailure(value);
 
-
-    doNotIssueAccesskey = (value: any) => {
-
-        value.nextTip(`${Agents.owner} can not book a flat without an access key. Go back to the Help Page, click the reset button and try again!!!`);
-
-        value.changeAction('agencyPageAsOwner', 'failure');
-        value.changeAction('agencyPageAsAgency', 'credNotIssued');
-        value.changeAction('demoOwnerCredFromAgency', 'failure');
-        value.changeAction('demoAgency', 'credNotIssued');
     }
 
 
+    doNotIssueAccesskey = (value: any) => {
+        value.changeAction('agencyPageAsAgency', 'credNotIssued');
+        this.handleFailure(value);
+    }
+
+    handleFailure = (value: any) => {
+        value.nextTip(`${Agents.owner} can not book a flat without an access key. Go back to the Help Page, click the reset button and try again!!!`);
+
+        value.changeAction('agencyPageAsOwner', 'failure');
+        value.changeAction('demoOwnerCredFromAgency', 'failure');
+        value.changeAction('demoAgency', 'credNotIssued');
+
+    }
 
     renderContentForOwner = (value: any) => {
 
@@ -386,6 +391,14 @@ export class AccommodationDapp extends React.Component<Props, State> {
                     />
                 </div>
 
+            );
+        } else if (value.actions.agencyPageAsAgency === 'errorIssuingCred') {
+            return (
+                <div>
+                    <AccessKeyRequests
+                        activeRequest={new AccessKeyReq(0, city ? city : '', checkIn, checkOut, price ? price : '', PassportStatus.valid, AccessKeyStatus.error)}
+                    />
+                </div>
             );
         }
 

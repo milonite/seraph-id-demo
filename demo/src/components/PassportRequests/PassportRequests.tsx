@@ -3,7 +3,7 @@
 
 import * as React from 'react';
 import './PassportRequests.css';
-import { Paper, Table, TableHead, TableRow, TableBody, TableCell, Fab, Grid } from '@material-ui/core';
+import { Paper, Table, TableHead, TableRow, TableBody, TableCell, Fab, Grid, Tooltip } from '@material-ui/core';
 import MediaQuery from 'react-responsive';
 
 
@@ -16,7 +16,8 @@ interface Props {
 export enum PassportStatus {
     pending,
     issued,
-    denied
+    denied,
+    error
 }
 
 export class PassportReq {
@@ -78,10 +79,19 @@ function PassportRequests({ activeRequest, issued, denied }: Props) {
             return (
                 <TableCell align="center"> <span className="CredentialIssued"> Credential Issued </span> </TableCell>
             )
-        } else {
+        } else if (req.status === PassportStatus.denied) {
             return (
                 <TableCell align="center"> <span className="ReqDenied"> Request Denied </span> </TableCell>
             )
+        } else {
+            return (
+                <TableCell align="center">
+                    <Tooltip title="Error: not able to connect to the Blockchain">
+                        <span className="ReqDenied"> Error </span>
+                    </Tooltip>
+                </TableCell>
+            );
+
         }
     }
 
@@ -159,8 +169,8 @@ function PassportRequests({ activeRequest, issued, denied }: Props) {
 
                             {/* mobile */}
                             <MediaQuery query="(max-width: 750px)">
-                                
-                            <Table>
+
+                                <Table>
                                     <TableHead>
                                         <TableRow>
                                             <TableCell> Name </TableCell>
@@ -170,7 +180,7 @@ function PassportRequests({ activeRequest, issued, denied }: Props) {
                                     <TableBody>
                                         {requests.map(req => (
                                             <TableRow key={req.firstName + req.secondName}>
-                                               <TableCell component="th" scope="row"> {req.firstName} {req.secondName} </TableCell>
+                                                <TableCell component="th" scope="row"> {req.firstName} {req.secondName} </TableCell>
                                                 {actions(req)}
                                             </TableRow>
                                         ))}

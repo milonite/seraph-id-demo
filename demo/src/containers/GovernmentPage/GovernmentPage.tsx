@@ -314,6 +314,23 @@ export class GovernmentPage extends React.Component<Props, State> {
                     activeRequest={request}
                 />
             );
+        } else if (value.actions.govPageAsGov === 'errorIssuingCred') {
+
+            const request = new PassportReq(
+                name ? name : '',
+                surname ? surname : '',
+                birthDate ? birthDate : '',
+                citizenship ? citizenship : '',
+                address ? address : '',
+                gender ? gender : 'male',
+                ' - ', PassportStatus.error, ' - ');
+
+
+            return (
+                <PassportRequests
+                    activeRequest={request}
+                />
+            );
         }
     }
 
@@ -384,7 +401,7 @@ export class GovernmentPage extends React.Component<Props, State> {
                     }
                     catch (err) {
                         console.error('issueClaim ERR', err);
-                        this.doNotIssueCredential(value);
+                        this.handleCredIssuingError(value);
                     }
 
 
@@ -393,17 +410,27 @@ export class GovernmentPage extends React.Component<Props, State> {
             }
         ).catch(err => {
             console.error('issueClaim ERR', err);
-            this.doNotIssueCredential(value);
+            this.handleCredIssuingError(value);
         });
     }
 
+    handleCredIssuingError = (value: any) => {
+        value.changeAction('govPageAsGov', 'errorIssuingCred');
+        this.handleFailure(value);
+
+    }
+
     doNotIssueCredential = (value: any) => {
+        value.changeAction('govPageAsGov', 'credNotIssued');
+        this.handleFailure(value);
+    }
+
+    handleFailure = (value: any) => {
         value.nextTip(`${Agents.owner} can not book a flat without a valid digital Passport. Go back to the Help Page, click the reset button and try again!!!`);
 
         value.changeAction('govPageAsOwner', 'failure');
         value.changeAction('demoOwnerCredFromGov', 'failure');
-        value.changeAction('demoGov', 'credNotIssued');
-        value.changeAction('govPageAsGov', 'credNotIssued');
+        value.changeAction('demoGov', 'credNotIssued');      
     }
 
     public render() {

@@ -9,10 +9,12 @@ Licensed under MIT License
 
 .CredentialIssued {
     color: green;
+    cursor: default;
 }
 
 .ReqDenied {
     color: red;
+    cursor: default;
 }
 
 .RequestsPaper {

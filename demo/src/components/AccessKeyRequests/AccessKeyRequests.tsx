@@ -3,7 +3,7 @@
 
 import * as React from 'react';
 import './AccessKeyRequests.css';
-import { Paper, Table, TableHead, TableRow, TableBody, TableCell, Fab, Grid } from '@material-ui/core';
+import { Paper, Table, TableHead, TableRow, TableBody, TableCell, Fab, Grid, Tooltip } from '@material-ui/core';
 import { theme } from '../../containers/App';
 import moment from 'moment';
 import MediaQuery from 'react-responsive'
@@ -25,7 +25,8 @@ export enum AccessKeyStatus {
     waitingForPassport,
     pending,
     issued,
-    denied
+    denied,
+    error
 }
 
 export class AccessKeyReq {
@@ -127,10 +128,19 @@ function AccessKeyRequests({ activeRequest, verified, issued, denied }: Props) {
             return (
                 <TableCell padding="checkbox" align="center"> <span className="CredentialIssued"> Issued </span> </TableCell>
             )
-        } else {
+        } else if (req.accessKeyStatus === AccessKeyStatus.denied) {
             return (
                 <TableCell padding="checkbox" align="center"> <span className="ReqDenied"> Denied </span> </TableCell>
             )
+        } else {
+            return (
+                <TableCell padding="checkbox" align="center">
+                    <Tooltip title="Error: not able to connect to the Blockchain">
+                        <span className="ReqDenied"> Error </span>
+                    </Tooltip>
+                </TableCell>
+            )
+
         }
     }
 
@@ -212,7 +222,7 @@ function AccessKeyRequests({ activeRequest, verified, issued, denied }: Props) {
                                 <Table>
                                     <TableHead>
                                         <TableRow>
-                                          
+
                                             <TableCell padding="checkbox"> Flat location </TableCell>
                                             <TableCell padding="checkbox" align="right"> Applicant Passport </TableCell>
                                             <TableCell padding="checkbox" align="center"> Access Key </TableCell>
@@ -221,7 +231,7 @@ function AccessKeyRequests({ activeRequest, verified, issued, denied }: Props) {
                                     <TableBody>
                                         {requests.map(req => (
                                             <TableRow key={req.id}>
-                                              
+
                                                 <TableCell padding="checkbox" component="th" scope="row">
                                                     {req.city}
                                                 </TableCell>
