@@ -1,6 +1,8 @@
+// Copyright (c) 2019 Swisscom Blockchain AG
+// Licensed under MIT License
+
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import './Government.css';
 import { Fab, CardHeader, Avatar, IconButton, Tooltip, Dialog, DialogContent, DialogTitle } from '@material-ui/core';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import { ApplicationContext, Agents } from '../../application-context';

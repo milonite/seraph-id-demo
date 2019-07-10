@@ -1,3 +1,6 @@
+// Copyright (c) 2019 Swisscom Blockchain AG
+// Licensed under MIT License
+
 import * as React from 'react';
 import './FlatCards.css';
 import { theme } from '../../containers/App';

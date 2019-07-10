@@ -1,4 +1,7 @@
 
+// Copyright (c) 2019 Swisscom Blockchain AG
+// Licensed under MIT License
+
 import { SeraphIDContract, SeraphIDIssuer } from '../demo/node_modules/@sbc/seraph-id-sdk/lib';
 import * as configs from '../demo/src/configs';
 

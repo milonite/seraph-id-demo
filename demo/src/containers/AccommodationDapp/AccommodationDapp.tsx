@@ -1,3 +1,6 @@
+// Copyright (c) 2019 Swisscom Blockchain AG
+// Licensed under MIT License
+
 import React from 'react';
 import './AccommodationDapp.css';
 import { Link } from 'react-router-dom';

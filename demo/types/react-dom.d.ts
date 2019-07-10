@@ -1,3 +1,6 @@
+// Copyright (c) 2019 Swisscom Blockchain AG
+// Licensed under MIT License
+
 export function createPortal(children: any, container: any, ...args: any[]): any;
 export function createRoot(container: any, options: any): any;
 export function findDOMNode(componentOrElement: any): any;

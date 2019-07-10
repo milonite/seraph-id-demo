@@ -1,5 +1,7 @@
-import * as React from 'react';
+// Copyright (c) 2019 Swisscom Blockchain AG
+// Licensed under MIT License
 
+import * as React from 'react';
 
 interface Props {
     issuer: string;

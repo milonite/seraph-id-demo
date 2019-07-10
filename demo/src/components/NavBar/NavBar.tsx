@@ -1,6 +1,8 @@
+// Copyright (c) 2019 Swisscom Blockchain AG
+// Licensed under MIT License
+
 import React from 'react';
 import './NavBar.css';
-
 import { Link } from 'react-router-dom';
 import { Tooltip, AppBar, Toolbar, Typography, IconButton } from '@material-ui/core';
 import HelpIcon from '@material-ui/icons/HelpOutline';

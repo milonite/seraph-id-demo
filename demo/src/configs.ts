@@ -1,4 +1,5 @@
-
+// Copyright (c) 2019 Swisscom Blockchain AG
+// Licensed under MIT License
 
 export const NEO_RPC_URL = 'https://demo.seraphid.io/rpc';
 export const NEOSCAN_URL = 'https://demo.seraphid.io/api';

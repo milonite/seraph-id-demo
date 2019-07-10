@@ -1,3 +1,6 @@
+// Copyright (c) 2019 Swisscom Blockchain AG
+// Licensed under MIT License
+
 import * as React from 'react';
 import './ActiveAgent.css';
 import Chip from '@material-ui/core/Chip';

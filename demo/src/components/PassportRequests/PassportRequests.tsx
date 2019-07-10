@@ -1,3 +1,6 @@
+// Copyright (c) 2019 Swisscom Blockchain AG
+// Licensed under MIT License
+
 import * as React from 'react';
 import './PassportRequests.css';
 import { Paper, Table, TableHead, TableRow, TableBody, TableCell, Fab, Grid } from '@material-ui/core';

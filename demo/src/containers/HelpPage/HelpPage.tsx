@@ -1,3 +1,6 @@
+// Copyright (c) 2019 Swisscom Blockchain AG
+// Licensed under MIT License
+
 import React from 'react';
 import './HelpPage.css';
 import logo from '../../assets/seraph-logo.svg';

@@ -1,7 +1,9 @@
+// Copyright (c) 2019 Swisscom Blockchain AG
+// Licensed under MIT License
+
 import * as React from 'react';
 import './UserTips.css';
-import { Snackbar, IconButton } from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
+import { Snackbar } from '@material-ui/core';
 import InfoIcon from '@material-ui/icons/InfoOutlined';
 import { ApplicationContext } from '../../application-context';
 

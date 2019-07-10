@@ -1,6 +1,8 @@
+// Copyright (c) 2019 Swisscom Blockchain AG
+// Licensed under MIT License
+
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import './SmartAgency.css';
 import { Fab, CardHeader, Avatar, Tooltip, IconButton, Dialog, DialogTitle, DialogContent } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import { ApplicationContext, Agents } from '../../application-context';

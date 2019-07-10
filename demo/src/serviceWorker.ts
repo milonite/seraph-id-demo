@@ -1,3 +1,6 @@
+// Copyright (c) 2019 Swisscom Blockchain AG
+// Licensed under MIT License
+
 // This optional code is used to register a service worker.
 // register() is not called by default.
 

@@ -1,5 +1,7 @@
+// Copyright (c) 2019 Swisscom Blockchain AG
+// Licensed under MIT License
+
 import * as React from 'react';
-import './LandLord.css';
 import { Fab, CardHeader, Avatar, Tooltip, CircularProgress } from '@material-ui/core';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import { ApplicationContext, Agents } from '../../application-context';
