@@ -8,13 +8,13 @@ import * as configs from '../demo/src/configs';
 console.log('... Executing bootstrap ... ');
 
 // Contract instances: 
-const govContract = new SeraphIDContract(configs.GOVERNMENT_SCRIPT_HASH, configs.NEO_RPC_URL, configs.NEOSCAN_URL);
-const agencyContract = new SeraphIDContract(configs.AGENCY_SCRIPT_HASH, configs.NEO_RPC_URL, configs.NEOSCAN_URL);
+const govContract = new SeraphIDContract(configs.GOVERNMENT_SCRIPT_HASH, configs.NEO_RPC_URL, configs.NEOSCAN_URL, configs.DID_NETWORK);
+const agencyContract = new SeraphIDContract(configs.AGENCY_SCRIPT_HASH, configs.NEO_RPC_URL, configs.NEOSCAN_URL, configs.DID_NETWORK);
 
 
 
 // Passport Schema creation
-const govIssuer = new SeraphIDIssuer(configs.GOVERNMENT_SCRIPT_HASH, configs.NEO_RPC_URL, configs.NEOSCAN_URL);
+const govIssuer = new SeraphIDIssuer(configs.GOVERNMENT_SCRIPT_HASH, configs.NEO_RPC_URL, configs.NEOSCAN_URL, configs.DID_NETWORK);
 
 govIssuer.registerNewSchema(
   configs.PASSPORT_SCHEMA_NAME,
@@ -29,7 +29,7 @@ govIssuer.registerNewSchema(
 
 
 // Access Key Schema creation
-const agencyIssuer = new SeraphIDIssuer(configs.AGENCY_SCRIPT_HASH, configs.NEO_RPC_URL, configs.NEOSCAN_URL);
+const agencyIssuer = new SeraphIDIssuer(configs.AGENCY_SCRIPT_HASH, configs.NEO_RPC_URL, configs.NEOSCAN_URL, configs.DID_NETWORK);
 agencyIssuer.registerNewSchema(
   configs.ACCESS_KEY_SCHEMA_NAME,
   ['flatId', 'address'],

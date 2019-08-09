@@ -67,7 +67,7 @@ function LandLord() {
 
         value.changeAction('demoLandlord', 'verifying');
 
-        const landLordVerifier = new SeraphIDVerifier(configs.AGENCY_SCRIPT_HASH, configs.NEO_RPC_URL, configs.NEOSCAN_URL);
+        const landLordVerifier = new SeraphIDVerifier(configs.AGENCY_SCRIPT_HASH, configs.NEO_RPC_URL, configs.NEOSCAN_URL, configs.DID_NETWORK);
         const accessKeyClaim = value.accessKeyClaim;
         console.log('access key Claim to Verify: ', value.accessKeyClaim);
 
