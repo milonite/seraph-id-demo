@@ -21,7 +21,6 @@ import uuid from 'uuid/v1';
 import { SeraphIDIssuer } from '@sbc/seraph-id-sdk';
 import * as configs from 'configs';
 
-
 interface Props {
     isAdmin: boolean;
     ownerWallet: any;
@@ -357,8 +356,7 @@ export class GovernmentPage extends React.Component<Props, State> {
     issueCredential = (value: any, request: PassportReq) => {
 
         value.changeAction('govPageAsGov', 'issuing');
-
-        const govIssuer = new SeraphIDIssuer(configs.GOVERNMENT_SCRIPT_HASH, configs.NEO_RPC_URL, configs.NEOSCAN_URL);
+        const govIssuer = new SeraphIDIssuer(configs.GOVERNMENT_SCRIPT_HASH, configs.NEO_RPC_URL, configs.NEOSCAN_URL, configs.DID_NETWORK)
         const ownerDID = localStorage.getItem('ownerDID');
 
         const claimID = uuid();

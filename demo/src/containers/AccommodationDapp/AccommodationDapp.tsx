@@ -52,7 +52,7 @@ export class AccommodationDapp extends React.Component<Props, State> {
 
         value.changeAction('agencyPageAsAgency', 'verifying');
 
-        const agencyVerifier = new SeraphIDVerifier(configs.GOVERNMENT_SCRIPT_HASH, configs.NEO_RPC_URL, configs.NEOSCAN_URL);
+        const agencyVerifier = new SeraphIDVerifier(configs.GOVERNMENT_SCRIPT_HASH, configs.NEO_RPC_URL, configs.NEOSCAN_URL, configs.DID_NETWORK);
         const passportClaim = value.passportClaim;
         console.log('passport Claim to Verify: ', value.passportClaim);
 
@@ -173,7 +173,7 @@ export class AccommodationDapp extends React.Component<Props, State> {
 
         value.changeAction('agencyPageAsAgency', 'credIssuing');
 
-        const agencyIssuer = new SeraphIDIssuer(configs.AGENCY_SCRIPT_HASH, configs.NEO_RPC_URL, configs.NEOSCAN_URL);
+        const agencyIssuer = new SeraphIDIssuer(configs.AGENCY_SCRIPT_HASH, configs.NEO_RPC_URL, configs.NEOSCAN_URL, configs.DID_NETWORK);
         const ownerDID = localStorage.getItem('ownerDID');
         const flatAddress = localStorage.getItem('flatLocation');
         const flatId = localStorage.getItem('flatId');
