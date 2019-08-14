@@ -10,7 +10,7 @@
     "@neo-one/client-common": "^1.1.2",
     "@neo-one/react": "^1.1.0",
     "@neo-one/react-core": "^1.1.2",
-    "@sbc/seraph-id-sdk": "^1.0.0",
+    "@sbc/seraph-id-sdk": "^2.0.0",
     "@types/jest": "24.0.12",
     "@types/node": "11.13.8",
     "@types/react": "16.8.15",
