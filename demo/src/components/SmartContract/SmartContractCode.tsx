@@ -47,7 +47,6 @@ namespace SeraphID
         public static object Main(string operation, params object[] args)
         {
             if (operation == "Name") return ISSUER_NAME;
-            if (operation == "DID") return ISSUER_DID;
             if (operation == "PublicKey") return ISSUER_PUBLIC_KEY;
             if (operation == "GetSchemaDetails") return GetSchemaDetails(args);
             if (operation == "RegisterSchema") return RegisterSchema(args);
@@ -58,7 +57,6 @@ namespace SeraphID
         }
 
         private static readonly string ISSUER_NAME = "Government";
-        private static readonly string ISSUER_DID = "did:neo:priv:AWLYWXB8C9Lt1nHdDZJnC5cpYJjgRDLk17";
         private static readonly string ISSUER_PUBLIC_KEY = "02103a7f7dd016558597f7960d27c516a4394fd968b9e65155eb4b013e4040406e";
 
         private static readonly string SCHEMA_DEFINITIONS_MAP = "schema-definitions";
@@ -244,7 +242,6 @@ namespace SeraphID
         public static object Main(string operation, params object[] args)
         {
             if (operation == "Name") return ISSUER_NAME;
-            if (operation == "DID") return ISSUER_DID;
             if (operation == "PublicKey") return ISSUER_PUBLIC_KEY;
             if (operation == "GetSchemaDetails") return GetSchemaDetails(args);
             if (operation == "RegisterSchema") return RegisterSchema(args);
@@ -255,7 +252,6 @@ namespace SeraphID
         }
 
         private static readonly string ISSUER_NAME = "Real Estate Agency";
-        private static readonly string ISSUER_DID = "did:neo:priv:AR3uEnLUdfm1tPMJmiJQurAXGL7h3EXQ2F";
         private static readonly string ISSUER_PUBLIC_KEY = "03d90c07df63e690ce77912e10ab51acc944b66860237b608c4f8f8309e71ee699";
 
         private static readonly string SCHEMA_DEFINITIONS_MAP = "schema-definitions";
