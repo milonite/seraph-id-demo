@@ -66,6 +66,8 @@ yarn build
 - Seraph ID SDK on [GitHub](https://github.com/swisscom-blockchain/seraph-id-sdk)
 - Seraph ID smart contract templates and examples on [GitHub](https://github.com/swisscom-blockchain/seraph-id-smart-contracts)
 - Seraph ID chrome extension on [GitHub](https://github.com/swisscom-blockchain/seraph-id-chrome-extension)
+- Seraph ID DID resolver on
+  [GitHub](https://github.com/swisscom-blockchain/seraph-id-did-driver)
 
 
 # License
